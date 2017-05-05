@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+</h:head>
+<h:body>
+<h:form id="form">
+     <p:dataTable id="singleDT" var="account" value="#{dtAccountSelect.accounts}" selectionMode="single" selection="#{dtAccountSelect.selectedAccount}" rowKey="#{account.ID}">
+        <f:facet name="header">
+            Számlák
+        </f:facet>
+        <p:column headerText="Számlaszám">
+            <h:outputText value="#{account.accountNumber}" />
+            
+        </p:column>
+        <p:column headerText="Egyenleg">
+            <h:outputText value="#{account.balance}" />
+        </p:column>
+        
+         
+        <f:facet name="footer">
+        
+         <p:commandButton value="Átutalás" id="sendMoney" action="#{dtAccountSelect.startTranzaction(1)}" />
+       	</f:facet>
+    </p:dataTable>
+    
+    
+
+</h:form>
+</h:body>
+
+</html>
